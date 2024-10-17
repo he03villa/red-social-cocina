@@ -1,0 +1,7 @@
+{
+  "name": "red-social-cocina",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
