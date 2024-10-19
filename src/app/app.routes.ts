@@ -6,6 +6,26 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
+    path: 'dashboard',
+    loadComponent: () => import('./pages/dashborad/dashborad.component').then( m => m.DashboradComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/dashborad-home/dashborad-home.page').then( m => m.DashboradHomePage)
+      },
+      {
+        path: '',
+        redirectTo: '',
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
     path: '',
     loadComponent: () => import('./pages/content/content.component').then( m => m.ContentComponent),
     children: [

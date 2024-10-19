@@ -41,8 +41,8 @@ export class LoginPage implements OnInit {
     if (!res.error) {
       console.log(res);
       this.form.reset();
-      //localStorage.setItem('dataUser', JSON.stringify(res));
-      //this._services.url('/dashboard');
+      localStorage.setItem('dataUser', JSON.stringify(res));
+      this._services.url('/dashboard');
     }
     this._services.removeLoading(event.target);
   }
