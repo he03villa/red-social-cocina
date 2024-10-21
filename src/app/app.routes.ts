@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { DashboradComponent } from './pages/dashborad/dashborad.component';
 
 export const routes: Routes = [
   {
@@ -7,20 +8,26 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadComponent: () => import('./pages/dashborad/dashborad.component').then( m => m.DashboradComponent),
+    loadComponent:() => import('./pages/dashborad/dashborad.component').then( m => m.DashboradComponent),
     children: [
-      {
-        path: '',
-        loadComponent: () => import('./pages/dashborad-home/dashborad-home.page').then( m => m.DashboradHomePage)
-      },
-      {
-        path: 'perfil-usuario',
-        loadComponent: () => import('./pages/perfil-usuario/perfil-usuario.page').then( m => m.PerfilUsuarioPage)
-      },
       {
         path: '',
         redirectTo: '',
         pathMatch: 'full'
+      },
+      {
+        path: '',
+        loadComponent: () => import('./pages/dashborad-home/dashborad-home.page').then( m => m.DashboradHomePage),
+        data: {
+          img: 'home-outline'
+        }
+      },
+      {
+        path: 'perfil-usuario',
+        loadComponent: () => import('./pages/perfil-usuario/perfil-usuario.page').then( m => m.PerfilUsuarioPage),
+        data: {
+          img: 'person-outline'
+        }
       },
       {
         path: '**',

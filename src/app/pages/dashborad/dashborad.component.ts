@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet, IonSplitPane, IonTabBar, IonTabButton, IonIcon } from '@ionic/angular/standalone';
 import { MenuLateralComponent } from 'src/app/components/menu-lateral/menu-lateral.component';
+import { addIcons } from 'ionicons';
+import { library, playCircle, radio, search } from 'ionicons/icons';
+import { NavComponent } from 'src/app/components/nav/nav.component';
 
 @Component({
   selector: 'app-dashborad',
   templateUrl: './dashborad.component.html',
   standalone: true,
-  imports: [IonSplitPane, IonApp, IonRouterOutlet, MenuLateralComponent],
+  imports: [IonIcon, IonTabButton, IonTabBar, IonSplitPane, IonApp, IonRouterOutlet, MenuLateralComponent, NavComponent],
   styleUrls: ['./dashborad.component.scss'],
 })
 export class DashboradComponent  implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    addIcons({ library, playCircle, radio, search });
+  }
 
   ngOnInit() {}
 
