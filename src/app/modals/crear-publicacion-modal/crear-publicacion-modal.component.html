@@ -1,0 +1,79 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="salir()">
+          <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Crear publicación</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="salir()">
+          PUBLICAR
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="content-user">
+    <img [src]="'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"/>
+    <div class="user">
+      <ion-label>{{ dataUser?.username }}</ion-label>
+      <ion-select value="peperoni">
+        <ion-select-option value="peperoni">Publico</ion-select-option>
+        <ion-select-option value="hawaii">Privado</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+  <div class="content-publicacion">
+    <form [formGroup]="form">
+      <ion-textarea formControlName="descripcion" placeholder="Escriba su publicación"></ion-textarea>
+    </form>
+  </div>
+  @if (dataFile.length > 0) {
+    <div class="content-file">
+      <swiper-container #swiper slides-per-view="4">
+        @for (item of dataFile; track $index) {
+          <swiper-slide>
+            <div class="content-carusel">
+              @if (item.type == 1) {
+                <img [src]="item.url" alt="" srcset="">
+              } @else if (item.type == 2) {
+                <video [src]="item.url"></video>
+              }
+              <div class="content-opcion-file">
+                <div class="btn-opcion-file">
+                  <label for="optional-{{ $index }}">
+                    <ion-icon name="pencil-outline"></ion-icon>
+                  </label>
+                  <input type="file" name="" id="optional-{{ $index }}" (change)="cambiarFoto($event, item.type, $index)">
+                </div>
+                <ion-icon name="trash-outline" (click)="eliminarArchivo($index)"></ion-icon>
+              </div>
+            </div>
+          </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+  }
+  <div class="content-optional-subida">
+    <div class="optional-subida">
+      <label for="imagen">
+        <img src="https://e7.pngegg.com/pngimages/527/625/png-clipart-scalable-graphics-computer-icons-upload-uploading-cdr-angle-thumbnail.png" alt="" srcset="">
+        Foto
+      </label>
+      <input type="file" name="" id="imagen" (change)="cambiarFoto($event, 1)">
+    </div>
+    <div class="optional-subida">
+      <label for="video">
+        <img src="https://cdn-icons-png.flaticon.com/512/4620/4620095.png" alt="" srcset="">
+        Video
+      </label>
+      <input type="file" name="" id="video" (change)="cambiarFoto($event, 2)">
+    </div>
+  </div>
+  <div class="content-btn">
+    <ion-button [disabled]="dataFile.length == 0 && form.invalid" (click)="savePublicacion($event)" expand="block" shape="round">
+      Publicar
+    </ion-button>
+  </div>
+</ion-content>

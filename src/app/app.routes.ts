@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/dashborad-home/dashborad-home.page').then( m => m.DashboradHomePage)
       },
       {
+        path: 'perfil-usuario',
+        loadComponent: () => import('./pages/perfil-usuario/perfil-usuario.page').then( m => m.PerfilUsuarioPage)
+      },
+      {
         path: '',
         redirectTo: '',
         pathMatch: 'full'
@@ -49,5 +53,6 @@ export const routes: Routes = [
       }
     ]
   },
+
 
 ];

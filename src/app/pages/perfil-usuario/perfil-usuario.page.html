@@ -1,0 +1,62 @@
+<app-nav></app-nav>
+<ion-content [fullscreen]="true" class="content-login">
+  <ion-grid>
+    <form [formGroup]="form">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="auto">
+          <ion-img class="logo" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Logo Yumai"></ion-img>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text class="title">
+            <h2>Perfil</h2>
+          </ion-text>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>Nombre</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <div class="content-password">
+            <ion-input class="form-control" formControlName="nombre" type="text" labelPlacement="stacked" placeholder="Ingrese su nombre"></ion-input>
+          </div>
+          <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'El correo es requerido',
+            control: form.controls['nombre'],
+            clase: 'black'
+          }"></ng-container>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>Telefono</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <div class="content-password">
+            <ion-input class="form-control" formControlName="telefono" type="number" labelPlacement="stacked" placeholder="Ingrese su telefono"></ion-input>
+          </div>
+          <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'El correo es requerido',
+            control: form.controls['telefono'],
+            clase: 'black'
+          }"></ng-container>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button expand="block" [disabled]="form.invalid" (click)="updateUser($event)">
+            Actulizar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+  <ng-template #formError let-control="control" let-message="message" let-clase="clase" let-validation="validation">
+    @if (control.hasError(validation) && (control.dirty || control.touched)) {
+      <ng-container>
+        <div class="fv-plugins-message-container">
+          <!-- [ngClass]="clase" -->
+          <span role="alert">
+            {{ message }}
+          </span>
+        </div>
+      </ng-container>
+    }
+  </ng-template>
+</ion-content>

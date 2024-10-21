@@ -1,0 +1,102 @@
+.content-user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;
+    padding: 0 10px;
+
+    img {
+        width: 40px;
+        border-radius: 50px;
+        margin: 0 20px 0 0;
+    }
+}
+
+.content-publicacion {
+    padding: 10px 20px;
+    ion-textarea {
+        color: white;
+        --highlight-color-focused: transparent;
+        --highlight-color: transparent;
+        background-color: #c1bfbf;
+        border-radius: 25px;
+        --padding-bottom: 5px;
+        --padding-end: 15px;
+        --padding-start: 15px;
+        --padding-top: 5px;
+        min-height: 150px;
+        font-family: 'Montserrat';
+        font-size: 15px;
+    }
+}
+
+.content-file {
+    margin: 0 15px;
+    .content-carusel {
+        display: block;
+        text-align: center;
+        img, video {
+            width: 80px;
+            border-radius: 10px;
+            height: 90px;
+        }
+        .content-opcion-file {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            ion-icon {
+                background-color: rgba(242, 242, 242, 0.5);
+                background-color: rgba(242, 242, 242, 0.5);
+                margin: 0 1px;
+                border-radius: 25px;
+                padding: 2px;
+                font-size: 19px;
+            }
+
+            .btn-opcion-file {
+                input {
+                    display: none;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+.content-optional-subida {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 15px;
+
+    .optional-subida {
+        margin: 5px 0;
+        label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 40px;
+                margin: 0 10px 0 0;
+            }
+        }
+        input {
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+}
+
+.content-btn {
+    display: block;
+    margin: 17px 0;
+    text-align: center;
+}

@@ -11,6 +11,13 @@ export const environment = {
       service: {
         saveUser: 'create',
         login: 'login',
+        updateUser: 'update',
+      }
+    },
+    publicacion: {
+      name: 'publicaciones',
+      service: {
+        savePublicacion: 'create',
       }
     }
   }
