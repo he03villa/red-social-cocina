@@ -113,9 +113,9 @@ export class ServicesService {
     });
   }
 
-/**
- * Validates if the given number is valid, not NaN, undefined, or null.
- */
+  /**
+   * Validates if the given number is valid, not NaN, undefined, or null.
+   */
   validarNumero(valor:number) {
     if (isNaN(valor) === true || valor <= 0.000000 || valor === undefined || valor === null) {
       return false;
@@ -150,12 +150,12 @@ export class ServicesService {
     }
   }
 
-/**
- * Validates if the given email string matches a standard email format.
- * 
- * @param email The email string to validate.
- * @returns true if the email matches the pattern, false otherwise.
- */
+  /**
+   * Validates if the given email string matches a standard email format.
+   * 
+   * @param email The email string to validate.
+   * @returns true if the email matches the pattern, false otherwise.
+   */
   validarCorreo(email:string) {
     const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email.match(pattern)) {
@@ -163,5 +163,15 @@ export class ServicesService {
     } else {
         return false;
     }
+  }
+
+  /**
+   * Changes the source of the given image element to the given error image.
+   * This can be used to handle image loading errors.
+   * @param event The event that triggered this function.
+   * @param errorImg The URL of the error image to display.
+   */
+  errorImg(event:any, errorImg:string) {
+    event.target.src = errorImg;
   }
 }

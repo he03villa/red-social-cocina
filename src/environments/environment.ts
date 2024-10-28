@@ -12,6 +12,7 @@ export const environment = {
         saveUser: 'create',
         login: 'login',
         updateUser: 'update',
+        buscarUsuarios: 'buscar-usuarios',
       }
     },
     publicacion: {

@@ -1,10 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { notifications, menuOutline, homeOutline, personOutline } from 'ionicons/icons';
+import { notifications, menuOutline, homeOutline, personOutline, searchOutline } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonButtons, IonImg, IonButton, IonIcon, IonMenuButton, IonSearchbar } from "@ionic/angular/standalone";
 import { routes } from 'src/app/app.routes';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ServicesService } from 'src/app/services/services.service';
+import { DashboradComponent } from 'src/app/pages/dashborad/dashborad.component';
+import { SearchComponent } from 'src/app/modals/search/search.component';
 
 @Component({
   selector: 'app-nav',
@@ -20,11 +22,12 @@ export class NavComponent implements OnInit {
   private _router = inject(Router);
   private _services:ServicesService = inject(ServicesService);
   style = "with: '36px'";
+  private _dashborad = inject(DashboradComponent);
 
   constructor() { 
     this.urlActiva(this._route.snapshot.url[0]?.path || '');
     addIcons({ personOutline, homeOutline });
-    addIcons({ notifications, menuOutline });
+    addIcons({ notifications, menuOutline, searchOutline });
     this._router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
         const url = events.url.split('/')[2];
@@ -48,6 +51,10 @@ export class NavComponent implements OnInit {
   clicBuscar() {
     console.log(this.style);
     this.style = "with: '100%'" ;
+  }
+
+  abrirModal() {
+    this._dashborad.abrirModal(undefined, SearchComponent);
   }
 
 }

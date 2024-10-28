@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="salir()">
+          <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Buscar</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar (ionInput)="buscarUser($event)" animated="true" placeholder="Buscar"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list [inset]="true">
+    @for (item of arrayUser; track $index) {
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" [src]="item.foto" (error)="_services.errorImg($event, 'https://ionicframework.com/docs/img/demos/avatar.svg')"/>
+        </ion-avatar>
+        <ion-label>{{ item.nombre != null ? item.nombre : item.username }}</ion-label>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>
